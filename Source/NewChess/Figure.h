@@ -44,5 +44,5 @@ public:
 		FVector Direction;
 
 	UPROPERTY(EditAnywhere, Category = "ChessFigure")
-		float movementSpeed;
+		int maxMovement;
 };

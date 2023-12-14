@@ -25,7 +25,16 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	//UPROPERTY(Category = "Chess")
-		AFigure* Grid[8][8];
+	AFigure* Grid[8][8] = {
+		{NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL},
+		{NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL},
+		{NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL},
+		{NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL},
+		{NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL},
+		{NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL},
+		{NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL},
+		{NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL}
+	};
 
 	//UPROPERTY(Category = "Chess")
 	//	TArray<AFigure*> Grid;
@@ -38,5 +47,14 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 		FString ParseToGridCoordinate(int i);
+
+	UFUNCTION(BlueprintCallable)
+		FString ShowFiguresList(int x, int y);
+
+	UFUNCTION(BlueprintCallable)
+		bool isCellTaken(int x, int y);
+
+	UFUNCTION(BlueprintCallable)
+		void RealLocationToCells(FVector location, int& x, int& y);
 };
 

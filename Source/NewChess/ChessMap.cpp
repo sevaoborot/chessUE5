@@ -15,7 +15,7 @@ AChessMap::AChessMap()
 // Called when the game starts or when spawned
 void AChessMap::BeginPlay()
 {
-	//Super::BeginPlay();
+	Super::BeginPlay();
 }
 
 // Called every frame
@@ -25,12 +25,16 @@ void AChessMap::Tick(float DeltaTime)
 }
 
 void AChessMap::SetFigures(int x,int y, AFigure* figure) {
-	if (Grid[x][y]!=NULL) Grid[x][y] = figure;
+	if (Grid[x][y]==NULL) Grid[x][y] = figure;
 	UE_LOG(LogTemp, Display, TEXT("Dot: x %d and y %d"), x, y);
 }
 
-AFigure* AChessMap::GetFigure(int x, int y) {
+AFigure* AChessMap::GetFigure(int x, int y) { //probably shoukd make deleting figures here
 	return Grid[x][y]; 
+}
+
+bool AChessMap::isCellTaken(int x, int y) {
+	return (Grid[x][y] != NULL ? true : false);
 }
 
 FString AChessMap::ParseToGridCoordinate(int i) {
@@ -38,4 +42,14 @@ FString AChessMap::ParseToGridCoordinate(int i) {
 	int y = i / 8;
 	FString xy = FString::FromInt(x) + FString::FromInt(y);
 	return xy;
+}
+
+FString AChessMap::ShowFiguresList(int x, int y) {
+	if (Grid[x][y]==NULL) return ("No figure!");
+	return Grid[x][y]->GetFName().ToString();
+}
+
+void AChessMap::RealLocationToCells(FVector location, int& x, int& y) {
+	x = location.X / 100;
+	y = location.Y / 100;
 }
