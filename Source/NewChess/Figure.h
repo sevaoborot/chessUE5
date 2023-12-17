@@ -35,9 +35,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void DeleteFigure(AChessMap* ChessMap); //Deletes eliminated figure figure
 
+	UFUNCTION(BlueprintCallable)
 	void countGridPos(int& x, int&y);
 
-	UPROPERTY(EditAnywhere, Category = "ChessFigure")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "ChessFigure")
 		bool IsWhite;
 
 	UPROPERTY(EditAnywhere, Category = "ChessFigure") //movement dir
