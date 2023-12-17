@@ -29,6 +29,10 @@ void AChessMap::SetFigures(int x,int y, AFigure* figure) {
 	UE_LOG(LogTemp, Display, TEXT("Dot: x %d and y %d"), x, y);
 }
 
+void AChessMap::ClearCell(int x, int y) {
+	Grid[x][y] = NULL;
+}
+
 AFigure* AChessMap::GetFigure(int x, int y) { //probably shoukd make deleting figures here
 	return Grid[x][y]; 
 }

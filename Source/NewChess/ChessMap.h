@@ -43,6 +43,9 @@ public:
 		void SetFigures(int x, int y, AFigure* figure);
 
 	UFUNCTION(BlueprintCallable)
+		void ClearCell(int x, int y);
+
+	UFUNCTION(BlueprintCallable)
 		AFigure* GetFigure(int x, int y);
 
 	UFUNCTION(BlueprintCallable)

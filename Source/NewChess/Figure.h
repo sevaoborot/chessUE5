@@ -36,7 +36,7 @@ public:
 		void DeleteFigure(AChessMap* ChessMap); //Deletes eliminated figure figure
 
 	UFUNCTION(BlueprintCallable)
-	void countGridPos(int& x, int&y);
+		void countGridPos(int& x, int&y);
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "ChessFigure")
 		bool IsWhite;
@@ -46,4 +46,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "ChessFigure")
 		int maxMovement;
+
+	UFUNCTION(BlueprintCallable)
+		FVector countRealPos(int& x, int& y);
 };

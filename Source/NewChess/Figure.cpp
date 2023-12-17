@@ -37,7 +37,7 @@ void AFigure::ChangeLocation(FVector NewLocation, AChessMap* ChessMap)
 {
 	int currentX, currentY;
 	countGridPos(currentX, currentY);
-	ChessMap->SetFigures(currentX, currentY, NULL);
+	ChessMap->ClearCell(currentX, currentY);
 	SetActorLocation(NewLocation);
 	countGridPos(currentX, currentY);
 	ChessMap->SetFigures(currentX, currentY, this);
@@ -48,7 +48,7 @@ void AFigure::DeleteFigure(AChessMap* ChessMap)
 {
 	int currentX, currentY;
 	countGridPos(currentX, currentY);
-	ChessMap->SetFigures(currentX, currentY, NULL);
+	ChessMap->ClearCell(currentX, currentY);
 	this->Destroy();
     //note: add chess cell ID to show the info on a display
 }
@@ -58,4 +58,11 @@ void AFigure::countGridPos(int& x, int& y)
 	FVector location = this->GetActorLocation();
 	x = location.X / 100;
 	y = location.Y / 100;
+}
+
+FVector AFigure::countRealPos(int& x, int& y) {
+	FVector location = FVector(0, 0, 0);
+	location.X = 100.0f * x;
+	location.X = 100.0f * x;
+	return location;
 }
